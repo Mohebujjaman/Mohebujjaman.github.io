@@ -1,0 +1,219 @@
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>MMJ</title>
+		<meta charset="UTF-8" />
+		<meta name="author" content="MMJ">
+		<meta name="genesis" content="05/06/2018">
+                <link href="http://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css" >
+                <link href="style.css" rel="stylesheet" type="text/css" >
+	</head>
+	<body>
+		<h1 id="author">Jaman Mohebujjaman</h1>
+		<!--Main menu-->
+                <div id="centeredmenu">
+                </div>
+		<!--End Main menu-->
+		<h3> Time-dependent magnetohydrodynamic flow </h3>
+		<div style="padding-top:10px">
+        <p>        
+        We consider the efficient and accurate numerical approximation of magnetohydrodynamic (MHD) flow, which is governed
+                by the system of evolution equations
+               \begin{align}
+                u_t+(u\cdot\nabla)u-(B\cdot\nabla)B-\nu\Delta u+\nabla p &=f,\\
+                                                                   \nabla\cdot u &=0,\\
+                B_t+(u\cdot\nabla)B-(B\cdot\nabla)u-\nu_m\Delta B+\nabla\lambda &=\nabla\times g,\\
+                                                                   \nabla\cdot B &= 0.
+                \end{align}
+        in $\Omega\times (0,T)$, where $\Omega$ is the domain of the fluid, $u$ is the velocity of the fluid, $p$ is a modified pressure,
+        $B$ is the magnetic field, $\nu$ is the kinematic viscosity, $\nu_m$ is the magnetic resistivity, $f$ is the body force, $\lambda$
+        is a Lagrange multiplier, and $\nabla\times g$ is the forcing on the magnetic field.</p> 
+
+        
+        <p>
+        A fundamental difficulty in simulating MHD flow is solving the fully coupled linear systems that arise in common discretizations of the 
+        above system. It is an open problem how to decouple the equations in an unconditionally stable way (with respect to the time step size), 
+        and thus timestepping methods that decouple the above equations are prone to unstable behavior without using excessively small timestep sizes. 
+        To confron this issue, we define the Elsasser variables as follows:
+        $v:=u+B$, $w:=u-B$, $f_1:=f+\nabla\times g$, $f_2:=f-\nabla\times g$, $q:=p+\lambda$, and $r:=p-\lambda$, and introduce them in 
+        the above system, which reduces to 
+        </p>
+
+        \begin{align*}
+         v_t+w\cdot\nabla v+\nabla q-\frac{\nu+\nu_m}{2}\Delta v-\frac{\nu-\nu_m}{2}\Delta w &=f_1,\\
+         \nabla\cdot v &=0,\\
+         w_t+v\cdot\nabla w+\nabla r-\frac{\nu+\nu_m}{2}\Delta w-\frac{\nu-\nu_m}{2}\Delta v &=f_2,\\
+         \nabla\cdot w &=0.
+        \end{align*}
+
+      <h5>  Algorithm 1:</h5> Let $f_1,f_2\in L^{\infty}(0,T:H^{-1}(\Omega))$ and time step $\Delta t>0$ and end time $T>0$ be given. Set $M=\frac{T}{\Delta t}$
+        and start with $v(0),w(0)\in H^2\cup V$, where $V$ is the space of divergence free functions. For all $n=0,1,\cdots,M-1$, compute
+        $(v_h^{n+1},w_h^{n+1})\in V_h\times V_h$ satisfying for all $(\chi_h,l_h)\in V_h\times V_h$, where $V_h$ is the discrete divergence free 
+        subspace of $X^h$,
+
+        \begin{align}
+\bigg(\frac{v_{h}^{n+1}-v_{h}^{n}}{\Delta t},& \chi_{h}\bigg)+(w_{h}^{n}\cdot\nabla v_{h}^{n+1},\chi_{h})+\frac{\nu+\nu_{m}}{2}(\nabla v_{h}^{n+1},\nabla\chi_{h}) 
++\frac{\nu-\nu_{m}}{2}(\nabla w_{h}^{n},\nabla \chi_{h})=(f_{1}(t^{n+1}),\chi_{h}), \label{discrete1}
+\end{align}
+and
+\begin{align}
+\bigg(\frac{w_{h}^{n+1}-w_{h}^{n}}{\Delta t},& l_h\bigg)+(v_{h}^{n}\cdot\nabla w_{h}^{n+1},l_h)+\frac{\nu+\nu_{m}}{2}(\nabla w_{h}^{n+1},\nabla l_h)
++\frac{\nu-\nu_{m}}{2}(\nabla v_{h}^{n},\nabla l_h)=(f_{2}(t^{n+1}),l_h).  \label{discrete2}
+\end{align}
+
+Even though the scheme is decoupled into two sub-problems, it is unconditionally stable with respect to the time step size. We proved this in the
+ following lemma.
+<p>
+<h5> Lemma 1:</h5> Suppose $f_{1},f_{2}\in L^{\infty}(0, T; H^{-1}(\Omega))$, $v_h^0,w_{h}^{0} \in H^1(\Omega)$. Then for any $\Delta t>0$, solutions to 
+the above algorithm satisfy
+\begin{align}
+\|v_{h}^{M}\|^2+\|w_{h}^{M}\|^2+\frac{(\nu-\nu_m)^2}{2(\nu+\nu_m)}{\Delta}t\left(\|{\nabla}v_{h}^{M}\|^2+\|{\nabla}w_{h}^{M}\|^2\right)+\frac{\nu\nu_m}{\nu+\nu_m}{\Delta}t\sum_{n=0}^{M-1}\left(\|{\nabla}v_{h}^{n+1}\|^2+\|{\nabla}w_{h}^{n+1}\|^2\right)\\\leq\|v_{h}^{0}\|^2+\|w_{h}^{0}\|^2+\frac{(\nu-\nu_m)^2}{2(\nu+\nu_m)}\left(\|{\nabla}v_{h}^{0}\|^2+\|{\nabla}w_{h}^{0}\|^2\right)+\frac{\nu+\nu_m}{\nu\nu_m}\Delta t \sum_{n=0}^{M-1}\left(\|f_{1}(t^{n+1})\|_{-1}^2+\|f_{2}(t^{n+1})\|_{-1}^2\|\right).\nonumber
+\end{align}
+
+The propose algorithm also converges optimally in space and in time, with assumed smoothness of the true solution.
+<h5> Theorem 1:</h5>
+ 
+Assume $(v,w,p)$ solves the continuous equations and satisfying
+\begin{eqnarray}
+& v,w\in L^\infty(0,T; H^m(\Omega)), \hspace{4mm} m=max\{2,k+1\},\nonumber\\
+& v_t,w_t \in L^{\infty}(0,T;H^{k+1}(\Omega)), \hspace{4mm} v_{tt},w_{tt} \in L^{\infty}(0,T;L^{2}(\Omega))\nonumber.
+\end{eqnarray}
+Then the finite dimensional solution $(v_h,w_h)$ to Algorithm 1  converges to the true solution: for any $\Delta t>0$,
+\begin{multline}
+\|v(T)-v_{h}^{M}\|+\|w(T)-w_h^M\|+\frac{\nu^2+\nu_m^2}{4(\nu+\nu_m)}\Delta t(\|\nabla(v(T)-v_h^M)\|+\|\nabla(w(T)-w_h^M)\|)+\frac{\nu\nu_m}{2(\nu+\nu_m)}\Bigg\{\Delta t\sum_{n=1}^{M-1}\big(\|\nabla(v(t^{n})-v_h^n)\|^2+\|\nabla(w(t^n)-w_h^n)\|^2\big)\Bigg\}^{\frac{1}{2}}\le C(h^k+\Delta t).
+\end{multline}
+<h5> Experiment 1: Convergence as $h,\Delta t\rightarrow 0$.</h5>
+We consider the following manufactured solution
+\[
+{v}=\left(\begin{array}{c} \cos y+(1+e^t)\sin y \\ \sin x+(1+e^t)\cos x \end{array} \right), \
+{w}=\left(\begin{array}{c} \cos y-(1+e^t)\sin y \\ \sin x-(1+e^t)\cos x) \end{array} \right), \ p = -\lambda=\sin(x+y),
+\]
+domain $\Omega=(0,1)^2$, $\nu=\nu_m=1$, and compute $f_1$ and $f_2$ from this.  We then computed with Algorithm 1, and compared our computed solution with this known analytical solution. To test the spatial convergence rate, we select a small end time $T=0.001$, timestep $\Delta t=T/8$, and compute on successively refined meshes.  Errors and rates are shown in table following tables, and we observe second order spatial convergence, which is in agreement with our analysis.  To test the temporal convergence rate, we use a mesh width of $h=1/64$, end time $T=1$, and compute with varying timestep sizes. Errors and rates are shown in the second table, and the expected first order temporal convergence is observed.
+
+\[
+  \begin{array}{|c|c |c|c|c |c| }
+    \hline
+    h & dim(X_h) & \| v-v_h\|_{2,1} & Rate & \| w-w_h\|_{2,1} & Rate  \\ \hline
+    {1}/{4}   & 324   & 1.0769e-4  &       & 2.0638e-4   &         \\ \hline
+    {1}/{8}   & 1156  & 2.7072e-5  &1.9921 & 5.1557e-5   & 2.0011  \\ \hline
+    {1}/{16}  & 4356  & 6.7771e-6  &1.9980 & 1.2887e-5   & 2.0003  \\ \hline
+    {1}/{32}  & 16900 & 1.6949e-6  &1.9995 & 3.2216e-6   & 2.0001  \\ \hline
+    {1}/{64}  & 66564 & 4.2380e-7  &1.9997 & 8.0541e-7   & 2.0000  \\ \hline
+  \end{array}
+\]
+
+\[
+  \begin{array}{|c|c | c|c|c |r| }
+    \hline
+     \Delta t & \| v-v_h \|_{2,1} & Rate & \| w-w_h\|_{2,1} & Rate  \\ \hline
+    {T}/{1}     &4.1088e-2   &           & 4.0721e-2 &        \\ \hline
+    {T}/{2}     &2.0206e-2   & 1.0239    & 1.9987e-2 & 1.0267 \\ \hline
+    {T}/{4}     &9.9334e-3   & 1.0244    & 9.8156e-3 & 1.0259 \\ \hline
+    {T}/{8}     &4.9141e-3   & 1.0154    & 4.8534e-3 & 1.0161 \\ \hline
+    {T}/{16}    &2.4430e-3   & 1.0083    & 2.4123e-3 & 1.0086 \\ \hline
+    {T}/{32}    &1.2181e-3   & 1.0040    & 1.2029e-3 & 1.0040 \\ \hline
+\end{array}
+ \]
+</p>
+<h5> Experiment 2: MHD Channel Flow over a Step.</h5>
+We test Algorithm 1 on two dimensional channel flow over a forward and backward facing step in the presence of a magnetic field, with $\nu=0.001$ and $\nu_m=1$. We choose a domain that is a $30\times 10$ rectangle with a $1\times 1$ step five units into the channel at the bottom.  We enforce boundary conditions for $v$ and $w$ that correspond to no slip velocity and $B=\langle 0,1 \rangle^T$ on the walls and step, and $u=\langle y(10-y)/25,0 \rangle^T $ at the inflow, $B=0$ at the inflow and outflow, and with outflow conditions for $u$.  The initial conditions are ${B}_{0}=0$ and $u_0=\langle y(10-y)/25,0 \rangle^T$.  Computations are run to $T=40$, using a timestep of $\Delta t=0.025$ and a mesh that provided $568,535$ total degrees of freedom.  Plots for the velocity solution (top) and the associated magnetic field solution (bottom) are shown at $T=40$ in the following figures.
+
+<table id="velocity_magnetic_field" align="center">
+<tr>
+<td>
+<div>
+<img src="./images/StepT40s05.png" alt=" " width="730" height="180" />
+</div>
+</td>
+</tr>
+<tr>
+<td>
+<img border="0" src="./images/StepT40s05B.png" alt=" " width="730" height="180" />
+</div>
+</td>
+</tr>
+</table>
+
+
+<h4> Second order decoupled method of Li and Trenchea:</h5>
+\begin{eqnarray*}
+\frac{1}{{\color{black}2}\Delta t} (3v^{n+1}-4v^n+v^{n-1}) + (2w^n-w^{n-1})\cdot\nabla v^{n+1}  + \nabla q^{n+1}&& \\ - \frac{\nu+\nu_m}{2}
+\Delta v^{n+1}  - \frac{\nu-\nu_m}{2} \Delta (2w^n-w^{n-1}) &= & f_{1}^{n+1},  \\
+\nabla \cdot v^{n+1} & = & 0,  \\
+\frac{1}{{\color{black}2}\Delta t} (3w^{n+1} - 4w^n + w^{n-1}) + (2v^n-v^{n-1})\cdot\nabla w^{n+1}  + \nabla r^{n+1} && \\ - \frac{\nu+\nu_m}{2}
+\Delta w^{n+1}- \frac{\nu - \nu_m}{2}\Delta (2v^{n}-v^{n-1}) & = & f_{2}^{n+1},   \\
+\nabla \cdot w^{n+1} & = & 0,
+\end{eqnarray*}
+and found it was unconditionally stable only under the restriction $\frac12 < {\color{black} Pr_m=\frac{v}{v_m}} <2$.
+
+
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config(
+	{
+		tex2jax: 
+		{
+			inlineMath: [['$','$']]
+		}
+	});
+	MathJax.Hub.Config(
+	{
+		TeX: 
+		{
+			Macros:
+			{
+				lt: ["<"],
+				lrk: ["\\left\\{ #1 \\right\\}",1],
+				bm: ["\\mathbf{#1}",1],
+				nr: ["\\left\\|#1\\right\\|",1],
+				av: ["\\left|#1\\right|",1],
+				ol: ["\\overline{#1}",1],
+				bbI: ["\\mathbb{I}"],
+				bbR: ["\\mathbb{R}"],
+				bbC: ["\\mathbb{C}"],
+				bbT: ["\\mathbb{T}"],
+				mT: ["\\mathcal{T}"],
+				mJ: ["\\mathcal{J}"],
+				tr: ["\\text{tr}"],
+				mat: ["\\text{M}_{n \\times n}(#1)",1],
+				bfu: ["\\mathbf{u}"],
+				bft: ["\\mathbf{t}"],
+				btau: ["{\\bf\\unicode[Arial]{x3C4}}"],
+				bfn: ["\\mathbf{n}"],
+				bfv: ["\\mathbf{v}"],
+				bfx: ["\\mathbf{x}"],
+				fdot: ["\\,\\cdot\\,"],
+				iin: ["\\text{ in }"],
+				newt: ["\\text{N}"],
+				metr: ["\\text{m}"],
+				visc: ["\\text{Pa}\\cdot\\text{s}"],
+				dens: ["\\text{Kg/m}^3"],
+				velo: ["\\text{m/s}"],
+				grav: ["\\text{m/s}^2"],
+				pres: ["\\text{Pa}"],
+				oon: ["\\text{ on }"],
+				bff: ["\\mathbf{f}"],
+				bfg: ["\\mathbf{g}"],
+				dv: ["\\nabla \\cdot"],
+				ep: ["\\varepsilon"],
+				lrp: ["\\left(#1\\right)",1],
+				lra: ["\\langle #1 \\rangle",1],
+				lrb: ["\\left\[ #1 \\right\]",1],
+				lrl: ["\\left.#1 \\right|_{#2}",2],
+				pt: ["\\frac{\\partial #1}{\\partial #2}",2]
+			}
+		}
+	});
+	</script>
+
+	<script type="text/javascript"
+		 src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+
+	<script src="sdd.js"> 
+	</script>
+
+	</body>
+	
+</html>
+
