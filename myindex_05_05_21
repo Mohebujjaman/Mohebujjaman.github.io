@@ -1,0 +1,294 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <!--  Below is where you set the title of your webpage, i.e. the
+      writing that appears on the tab.
+      -->
+    <title>Mohebujjaman-Home</title>
+    <link href="main.css" type="text/css" rel="stylesheet">
+    <!--  Below is where you set your background image.  Make sure you pick an image that is tall vertically as the following
+      code auto-fits the width to a user's browser window.			
+      -->
+    <style type="text/css">
+      <!--
+        body {
+        background-image:  url("./movie_channel_Re_100.mpg");
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: 100% auto;
+        }
+        -->
+    </style>
+  </head>
+  <body onload="pick_image()">
+    <table border="0" cellpadding="10" width="715" align="center">
+    <tbody>
+      <tr>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="5" width="100%">
+            <tbody>
+              <tr>
+                <td class="cell_underline_30" align="right" valign="bottom"><a href="https://mohebujjaman.github.io/"><span class="Color_Grey_90">
+                  <strong style="font-family: Arial,Helvetica,sans-serif; font-size: x-small; font-weight: normal; color: #000000">
+                  home
+                  </strong>
+                  </span> </a>
+                  <a href=""><span class="Color_Grey_90"></span></a> 
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="10" width="100%" align="center">
+            <tr>
+              <td rowspan="2" valign="top" style="width: 30%">
+                <div class="sidebar_links">
+                  <ul>
+                    <!--  Below are the sidebar links.  To remove one, you need to remove from <li> to </li>. To add
+                      another, simply copy and paste one onto another line beneath it and whatever is in the 
+                      quotes is the link that it will take a user to if the user clicks on the sidebar link.						  
+                      -->
+                    <li><a href="https://mohebujjaman.github.io/">Home</a></li>
+                    <li><a href="./CV_Jaman.pdf"> CV </a></li>
+                    <li><a href="./resume.pdf"> Resume </a></li>
+                    <li><a href="https://github.com/Mohebujjaman">Github</a></li>
+                    <li><a href="https://www.linkedin.com/profile/view?id=AAIAAAg8_eUBKEVdHCzoU8OuxcZ1P5vLYJ1qdBM&trk=nav_responsive_tab_profile">LinkedIn</a></li>
+                    <li><a href="./teaching.html">Teaching</a> <br /></li>
+                  <!--  <li><a href="./Page_OSS.html">Open-source Software</a> <br /></li> -->
+                    <li><a href="./Research.html">Research</a> <br /></li>
+                    <li><a href="./ConferenceAndSeminarPresentation.html">Talk</a><br /></li>
+                  </ul>
+                </div>
+                <table border="0"  cellpadding="2" width="100%" align="center">
+                  <tbody>                
+                   <p>
+
+
+                    <tr>
+                      <td style="color: #FFFFFF">
+                        <div align="center">
+                          <strong>
+                            <span class="Text_Medium">
+                              <a href="http://www.mit.edu/">
+                                <!--  This is the MIT logo. Above is a link to the website it will take a user to 
+                                  if a user clicks on it.
+                                  -->
+                                <img border="0" src="./MIT_logo.png" alt=" " width="110" height="110" />
+                              </a>
+                            </span>
+                          </strong>
+                        </div>
+                      </td>
+                    </tr>
+                      <tr>
+
+
+                    
+                   <tr>
+                      <td style="color: #FFFFFF">
+                        <div align="center">
+                          <strong>
+                            <span class="Text_Medium">
+                              <a href="https://vt.edu/">
+                                <!--  This is the Virginia Tech logo. Above is a link to the website it will take a user to 
+                                  if a user clicks on it.                                                 
+                                  -->
+                                <img border="0" src="./Virginia-Tech-Logo.jpg" alt=" " width="110" height="110" />
+                              </a>
+                            </span>
+                          </strong>
+                        </div>
+                      </td>
+                    </tr>
+                      <tr>
+
+
+                    <tr>
+                      <td style="color: #FFFFFF">
+                        <div align="center">
+                          <strong>
+                            <span class="Text_Medium">
+                              <a href="http://www.clemson.edu//">
+                                <!--  This is the Clemson University logo. Above is a link to the website it will take a user to 
+                                  if a user clicks on it.						  
+                                  -->
+                                <img border="0" src="./paw_orange.png" alt=" " width="110" height="110" />
+                              </a>
+                            </span>
+                          </strong>
+                        </div>
+                      </td>
+                    </tr>
+                      <tr>
+                    <td style="color: #FFFFFF">
+                    <div align="center">
+                    <strong><span class="Text_Medium">
+                    <a href="http://www.buet.ac.bd//">
+                    <!--  This is the BUET  logo. Above is a link to the website it will 
+                      take a user to if a user clicks on it.						  
+                      -->
+                    <img border="0" src="./BUET.png" alt=" " width="110" height="110" />
+                    </a>
+                    </span>
+                    </strong>
+                    </div>
+                    </td>
+                    </tr>
+                    <tr>
+                      <td style="color: #FFFFFF">
+                        <div align="center">
+                          <strong>
+                            <span class="Text_Medium">
+                              <a href="http://www.seu.ac.bd//">
+                                <!--  This is the SEU logo. Above is a link to the website it will take a user to 
+                                  if a user clicks on it.						  
+                                  -->
+                                <img border="0" src="./seu.jpg" alt=" " width="110" height="100" />
+                              </a>
+                            </span>
+                          </strong>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              
+              
+
+                
+              <td rowspan="2" valign="top" style="width: 70%">
+                <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                  <tr>
+                    <td style="color: #000000">
+                      <div align="center">
+                        <strong>
+                          <span class="Text_Medium">
+                            <a href="https://www.clemson.edu/">
+                              <!--  This is the top banner of the website that says Clemson and has a tiger on it.
+                                You can find similar files by searching for banners on Google.  Just make sure
+                                that you pick a picture that is wide horizontally but short vertically. Above 
+                                is a link to the website it will take a user to if a user clicks on it.						  
+                                -->
+                              <img border="0" src="./black-and-white-tiger-wallpaper.jpg" alt=" " width="600" height="260"/>
+                            </a>
+                          </span>
+                        </strong>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td valign="top">
+                        <table border="0" cellpadding="0" width="100%">
+                          <tbody>
+                            <tr>
+                              <td align="left" valign="top">
+                                <p>
+                                  <strong class="Text_Large" style="font-family: Verdana,Arial,Helvetica,sans-serif; font-size: large; font-weight: bold; color: #000000">					
+                                  Muhammad Mohebujjaman.</strong><br />
+                                </p>
+                                <p>
+                                  <!-- Below is where the main text of the web page
+                                    is set.						  
+                                    -->
+                                  <strong style="font-family: Arial,Helvetica,sans-serif; font-size: large; font-weight: normal; color: #000000">
+<div align="justify">
+Currently, I am working as a Postdoctoral Associate at Plasma Science and Fusion Center, Massachusetts Institute of Technology. My primary objective is to build and implement fast efficient algorithms for the Maxwell equations in <a href="http://piscope.psfc.mit.edu/index.php/Installing_Petra-M">Petra-M</a>. I am interested in fluid flow simulations, uncertainty quantification (UQ), MHD, finite elements method/analysis, reduced order modeling (ROM), soft-tissue deformation simulation, multi-physics problems, large scale computing, and numerical PDEs in general.
+  I am comfortable in implementing scientific algorithms using
+  <li><a href="https://www.dealii.org/">Deal.II</a> an open source C++ finite element library</li>
+  <li><a href="https://www.mathworks.com/products/matlab.html">Matlab</a></li>
+  <li><a href="https://freefem.org/">Freefem++</a></li>
+</div> 
+</p>
+<p>
+</p>
+<img src="/StepT40s05B-1.png" height="90" width="340">
+<img src="/movie_Re100_sf.gif",height="500", width= "330",alt="Flow past a circular cylinder.">
+<img src="/Speedcontournew.png" height="120" width="400">
+                                <p>
+</p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                      <td style="width: 10px">&nbsp;</td>
+                      <td valign="top" style="width: 45%">
+                        <table border="0" cellpadding="2" width="50%">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <table border="0" cellspacing="0" cellpadding="2" width="100%">
+                                  <tr>
+                                    <td valign="top" align="center">
+                                      <!-- Below is where your main picture is set.  Notice that you can have multiple pictures 
+                                        here and when a user visits your site, this script will random pick one of them.  
+                                        If you only want one, do as I do and put the single picture in every spot.						  
+                                        -->
+                                      <script language="javascript">
+                                        var random_images = new Array ( );
+                                                                                                       random_images[0] = "./jamanpic.jpg";
+                                                                                                       random_images[1] = "./jamanpic.jpg";
+                                                                                                       random_images[2] = "./jamanpic.jpg";
+                                                                                                       random_images[3] = "./jamanpic.jpg";
+                                                                                                       random_images[4] = "./jamanpic.jpg"; 
+                                                                                                       random_images[5] = "./jamanpic.jpg";
+                                                                                                       random_images[6] = "./jamanpic.jpg";
+                                                                                                       random_images[7] = "./jamanpic.jpg"; 
+                                        function rand ( n ){
+                                                                                                          return ( Math.floor ( Math.random ( ) * n + 1 ) );
+                                                                                                       }
+                                        function pick_image ( ){
+                                                                                                         document.getElementById("random-image").src = random_images[rand(8)-1];
+                                                                                                       }
+                                        // --> 
+                                      </script>
+                                      <img id="random-image" alt=" " width="250" height="250" />
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <p>
+                          &nbsp;
+                        </p>
+                      </td>
+                    </tr>
+                 </tbody>
+                </table>
+              </td>
+              <td> 
+            </tr>
+            </tbody>	        
+          </table>
+          <!--  Below is where you can change the information on the
+            bottom of the webpage.
+            -->
+  </body>
+  <table align="center" border="0" cellspacing="0" cellpadding="5" width="100%">
+  <tbody>
+  <tr>
+  <td><hr>
+  <p><center> 
+  <strong style="font-family: Arial,Helvetica,sans-serif; font-size: x-small; font-weight: normal; color: #000000">
+  <b>Contact Info:</b> Dr. Mohebujjaman, Plasma Science and Fusion Center, Massachusetts Institute of Technology, 175 Albany St., NW17-168
+Cambridge, MA 02139. 
+    <div  itemscope itemtype="https://schema.org/Person"> <b>E-mail:</b> <a href="mailto:mjaman@mit.edu">mjaman@mit.edu</a>. My ORCID is <a itemprop="sameAs" content="https://orcid.org/0000-0003-4278-7078" href="https://orcid.org/0000-0003-4278-7078" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"><img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon">https://orcid.org/0000-0003-4278-7078</a></div>
+      </strong>
+  </center>
+  </p>
+   </td>
+  </tr>
+  </tbody>
+  </table>
+  </td>	
+</html>
+
